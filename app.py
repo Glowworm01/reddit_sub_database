@@ -1,7 +1,6 @@
 from praw import *
 from termcolor import colored
 import json
-from time import sleep
 
 reddit = Reddit(
     client_id="p6JgvHLDvRWmAQ",
@@ -9,7 +8,14 @@ reddit = Reddit(
     user_agent="windows:reddit.api.stuffs:v1.0.0 (by u/Glowworm04)"
 )
 
-history = []
+subs = {}
+
+def add_to_db(sub):
+    name = sub.display_name
+    desc = sub.public_description
+    subs[name] = desc
+    with open("sub_db.json", "w") as fl:
+        json.dump(subs, fl, indent=4)
 
 def print_sub(sub):
     name = colored(sub.display_name, 'green', attrs=['bold'])
@@ -18,23 +24,11 @@ def print_sub(sub):
     url = colored(raw_url, 'magenta')
     print('\n' + name + ': ' + url + '\n' + desc)
     
-def save_to_file(sub):
-    pass
-
-def check_history(sub):
-    if sub.display_name in history:
-        return False
-    else:
-        history.append(sub.display_name)
-        return True
-
 def main():
     while True:
         sub = reddit.subreddit("randnsfw")
-        if check_history(sub):
-            print_sub(sub)
-            save_to_file(sub)
-        sleep(1)
+        add_to_db(sub)
+        print_sub(sub)
         
 
 main()

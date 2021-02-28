@@ -13,8 +13,7 @@ subs = {}
 def add_to_db(sub):
     name = sub.display_name
     desc = sub.public_description
-    users = sub.subscribers
-    subs[name] = [users, desc]
+    subs[name] = desc
     with open("sub_db.json", "w") as fl:
         json.dump(subs, fl, indent=4)
 
@@ -28,7 +27,7 @@ def print_sub(sub):
     
 def main():
     while True:
-        sub = reddit.subreddit("random")
+        sub = reddit.subreddit("randnsfw")
         add_to_db(sub)
         print_sub(sub)
         

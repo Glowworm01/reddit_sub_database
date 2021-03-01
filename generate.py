@@ -8,14 +8,16 @@ reddit = Reddit(
     user_agent="windows:reddit.api.stuffs:v1.0.0 (by u/Glowworm04)"
 )
 
-subs = {}
+with open("sub_db.json", "r") as fl:
+    subs = json.load(fl)
 
 def add_to_db(sub):
     name = sub.display_name
     desc = sub.public_description
-    subs[name] = desc
-    with open("sub_db.json", "w") as fl:
-        json.dump(subs, fl, indent=4)
+    if name not in subs:
+        subs[name] = desc
+        with open("sub_db.json", "w") as fl:
+            json.dump(subs, fl, indent=4)
 
 def print_sub(sub):
     name = colored(sub.display_name, 'green', attrs=['bold'])

@@ -11,16 +11,3 @@ class Database:
 
     def search_by_value(self, query, limit=200, threshold=80):
         return filter(lambda x: x[1] > threshold, process.extract(query, self.db.values(), limit=limit))
-
-
-db = Database('sub_db.json')
-
-test = db.search_by_key('minecraft')
-for i in test:
-    print(i)
-
-test = db.search_by_value('minecraft')
-for i in test:
-    print(i)
-
-

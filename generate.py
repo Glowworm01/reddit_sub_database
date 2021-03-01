@@ -18,20 +18,27 @@ def add_to_db(sub):
         subs[name] = desc
         with open("sub_db.json", "w") as fl:
             json.dump(subs, fl, indent=4)
+        print_status(name, success=True)
+    else:
+        print_status(name, success=False)
+
+def print_status(name, success):
+    if success:
+        msg = colored(f'Added {name} to database, database now contains {len(subs)} entries.', 'green')
+    else:
+        msg = colored(f'Databse already contains {name}. Skipping.', 'red')
+    print(msg)
 
 def print_sub(sub):
     name = colored(sub.display_name, 'green', attrs=['bold'])
     desc = colored(sub.public_description, 'blue')
-    users = colored(sub.subscribers, 'red')
     raw_url = 'https://www.reddit.com' + sub.url
     url = colored(raw_url, 'magenta')
-    print('\n' + name + ': ' + url + ' - ' + users + '\n' + desc)
+    print(f"\n{name}: {url}\n{desc}")
     
 def main():
     while True:
         sub = reddit.subreddit("random")
         add_to_db(sub)
-        print_sub(sub)
-        
 
 main()

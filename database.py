@@ -15,11 +15,11 @@ class Database:
 
 db = Database('sub_db.json')
 
-test = db.search_by_key('test')
+test = db.search_by_key('minecraft')
 for i in test:
     print(i)
 
-test = db.search_by_value('test')
+test = db.search_by_value('minecraft')
 for i in test:
     print(i)
 

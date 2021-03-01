@@ -15,12 +15,12 @@ class Database:
 
 db = Database('sub_db.json')
 
-balls = db.search_by_key('petite')
-for i in balls:
+test = db.search_by_key('test')
+for i in test:
     print(i)
 
-balls = db.search_by_value('petite')
-for i in balls:
+test = db.search_by_value('test')
+for i in test:
     print(i)
 
 

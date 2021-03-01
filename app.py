@@ -27,7 +27,7 @@ def print_sub(sub):
     
 def main():
     while True:
-        sub = reddit.subreddit("randnsfw")
+        sub = reddit.subreddit("random")
         add_to_db(sub)
         print_sub(sub)
         

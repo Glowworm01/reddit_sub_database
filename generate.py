@@ -11,7 +11,7 @@ reddit = Reddit(
 with open("sub_db.json", "r") as fl:
     subs = json.load(fl)
 
-def add_to_db(sub):
+def add_to_db(sub): # add the sub to the db if it isnt already
     name = sub.display_name
     desc = sub.public_description
     if name not in subs:
@@ -22,23 +22,20 @@ def add_to_db(sub):
     else:
         print_status(name, success=False)
 
-def print_status(name, success):
+def print_status(name, success): # Print whether the current sub is already in the database or not
     if success:
         msg = colored(f'Added {name} to database, database now contains {len(subs)} entries.', 'green')
     else:
         msg = colored(f'Databse already contains {name}. Skipping.', 'red')
     print(msg)
 
-def print_sub(sub):
+def print_sub(sub): # Print the found subreddit in a nice readable format
     name = colored(sub.display_name, 'green', attrs=['bold'])
     desc = colored(sub.public_description, 'blue')
     raw_url = 'https://www.reddit.com' + sub.url
     url = colored(raw_url, 'magenta')
     print(f"\n{name}: {url}\n{desc}")
-    
-def main():
-    while True:
-        sub = reddit.subreddit("random")
-        add_to_db(sub)
 
-main()
+while True:
+    sub = reddit.subreddit("random")
+    add_to_db(sub)

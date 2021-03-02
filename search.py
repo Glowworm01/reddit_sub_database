@@ -5,9 +5,23 @@ db = Database('sub_db.json')
 
 while True:
     query = input("Enter search term: ")
-    results = db.search_by_key(query)
+    key_results = db.search_by_key(query)
+    value_results = db.search_by_value(query)
 
-    for result in results:
-        name = colored(f"\tr/{result[0]}:\n", 'green', attrs=['bold'])
-        desc = colored(f"\t{db.db[result[0]]}\n", 'blue')
-        print(name, desc)
+    print(colored("By Name: ", 'red', attrs=['bold']))
+    for result in key_results:
+        name = colored(f"r/{result[0]}:", 'green', attrs=['bold'])
+        desc = filter(lambda x: x != '', db.db[result[0]].split("\n"))
+        print(name)
+        for i in desc:
+            print(colored(i, 'blue'))
+        print('\n')
+
+    print(colored("By Description: ", 'red', attrs=['bold']))
+    for result in value_results:
+        name = colored(f"r/{db.db_inverse[result[0]]}:", 'green', attrs=['bold'])
+        desc = filter(lambda x: x != '', result[0].split("\n"))
+        print(name)
+        for i in desc:
+            print(colored(i, 'blue'))
+        print('\n')

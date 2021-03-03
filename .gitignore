@@ -1,3 +1,2 @@
-cats.json
-sub_db.json
+*.json
 **/__pycache__

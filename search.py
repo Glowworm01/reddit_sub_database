@@ -17,7 +17,7 @@ while True:
             print(colored(i, 'blue'))
         print('\n')
 
-    print(colored("By Description: ", 'red', attrs=['bold']))
+    print(colored("By Description:", 'red', attrs=['bold']))
     for result in value_results:
         name = colored(f"r/{db.db_inverse[result[0]]}:", 'green', attrs=['bold'])
         desc = filter(lambda x: x != '', result[0].split("\n"))

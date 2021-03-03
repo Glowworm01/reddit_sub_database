@@ -11,8 +11,8 @@ results = []
 final_text = ''
 
 for cat in categories:
-    print(colored(f"Currently generating {cat}", 'cyan'))
-    final_text += f"\n---{cat}---\n"
+    print(colored(f"Now generating {cat}", 'cyan'))
+    final_text += f"\n---{cat.capitalize()}---\n"
     results = []
     for i in categories[cat]:
         subs_name = db.search_by_key(i)

@@ -46,5 +46,5 @@ def print_sub(sub):
 
 # main loop, finds a subreddit and calls 'add_to_db' with the found subreddit
 while True:
-    sub = reddit.subreddit("randnsfw")
+    sub = reddit.subreddit("random")
     add_to_db(sub)

@@ -11,7 +11,7 @@ reddit = Reddit(
     user_agent=client_data['user_agent']
 )
 
-with open("subs_formatted.json", "r") as fl:
+with open("sub_db.json", "r") as fl:
     db = json.load(fl)
 
 clean_db = {}
@@ -32,5 +32,5 @@ for sub in db:
     processed += 1
     check_sub(sub)
 
-with open("subs_formatted.json", "w") as fl:
+with open("sub_db.json", "w") as fl:
     json.dump(clean_db, fl, indent=4)

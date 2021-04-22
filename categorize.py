@@ -1,6 +1,7 @@
 from database import Database
 import json
 from termcolor import colored
+from os import path
 
 db = Database('sub_db.json')
 
@@ -38,5 +39,5 @@ for i in db.db.keys():
 final_text += '</ul>'
 
 print(colored(f"Finished generating. Outputing to 'categories.html'", 'green', attrs=['bold']))
-with open('categories.html', 'w') as fl:
+with open(path.join('output', 'categories.html'), 'w') as fl:
     fl.write(final_text)

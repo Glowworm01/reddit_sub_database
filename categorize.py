@@ -13,7 +13,7 @@ final_text = ''
 
 for cat in categories:
     print(colored(f"Now generating {cat}", 'cyan'))
-    final_text += f"<h2>{cat.capitalize()}</h2>"
+    final_text += f"<h2>{cat.capitalize()}</h2>\n"
     results = []
     for i in categories[cat]:
         subs_name = db.search_by_key(i)
@@ -24,18 +24,18 @@ for cat in categories:
         for i in subs_desc:
             if db.db_inverse[i[0]] not in results:
                 results.append(db.db_inverse[i[0]])
-    final_text += '<ul>'
+    final_text += '\t<ul>\n'
     for result in results:
-        final_text += f"<li><a target='_blank' href='https://www.reddit.com/r/{result}'>r/{result}</a></li>"
+        final_text += f"\t\t<li><a target='_blank' href='https://www.reddit.com/r/{result}'>r/{result}</a></li>\n"
         processed.append(result)
-    final_text += '</ul>'
+    final_text += '\t</ul>\n'
 
-final_text += f"<h2>Other</h2>"
-final_text += '<ul>'
+final_text += f"<h2>Other</h2>\n"
+final_text += '\t<ul>\n'
 for i in db.db.keys():
     if i not in processed:
-        final_text += f"<li><a target='_blank' href='https://www.reddit.com/r/{i}'>r/{i}</a></li>"
-final_text += '</ul>'
+        final_text += f"\t\t<li><a target='_blank' href='https://www.reddit.com/r/{i}'>r/{i}</a></li>\n"
+final_text += '\t</ul>\n'
 
 print(colored(f"Finished generating. Outputing to 'categories.html'", 'green', attrs=['bold']))
 with open('categories.html', 'w') as fl:

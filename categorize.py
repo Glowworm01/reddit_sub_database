@@ -39,5 +39,5 @@ for i in db.db.keys():
 final_text += '\t</ul>\n'
 
 print(colored(f"Finished generating. Outputing to 'categories.html'", 'green', attrs=['bold']))
-with open(path.join('output', 'categories.html'), 'w') as fl:
+with open('categories.html', 'w') as fl:
     fl.write(final_text)

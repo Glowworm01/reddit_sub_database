@@ -24,7 +24,7 @@ Now that the tool can access the Reddit API, you can run `generate.py`. This wil
 It will likely take many hours to generate a databse containing anything more than the top subreddits due to the way the Reddit API works.
 
 ### Categorising
-The tool can attribute keywords to subreddits by searching through the names and descriptions and then output a list of categorised subreddits in a nice HTML format. This can be done by running `categorize.py` with either the `regex` argument or the `lev` argument, the later uses the [Levenshtein-Distance Formula](https://en.wikipedia.org/wiki/Levenshtein_distance) and is quite slow, and inaccurate compared to the Regular Expressions method; the RegEx method is much faster but requires the categories to be very specific. No matter what method you choose it does require a little assembly.
+The tool can attribute keywords to subreddits by searching through the names and descriptions and then output a list of categorised subreddits in a nice HTML format. This can be done by running `categorize.py` with either the `regex` argument or the `lev` argument, the latter uses the [Levenshtein-Distance Formula](https://en.wikipedia.org/wiki/Levenshtein_distance) and is quite slow, and inaccurate compared to the Regular Expressions method; the RegEx method is much faster but requires the categories to be very specific. No matter what method you choose it does require a little assembly.
 In order for the tool to be able to determine what keywords fit into what categories the user must specify. This can be done by creating a file called `cats.json`.
 The `cats.json` is easier to show then explain.
 ```json

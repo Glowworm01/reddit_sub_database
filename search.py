@@ -5,8 +5,8 @@ db = Database('sub_db.json')
 
 while True:
     query = input("Enter search term: ")
-    key_results = db.search_by_key(query)
-    value_results = db.search_by_value(query)
+    key_results = db.lev_search_by_key(query)
+    value_results = db.lev_search_by_value(query)
 
     print(colored("By Name: ", 'red', attrs=['bold']))
     for result in key_results:
